@@ -17,8 +17,6 @@ export const ContactList = ({ items, removeContact }) => {
   );
 };
 
-ContactList.defaultProps = { items: [] };
-
 ContactList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
