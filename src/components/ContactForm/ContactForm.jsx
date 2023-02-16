@@ -2,7 +2,7 @@ import css from './contactForm.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { fields } from './fields';
+// import { fields } from './fields';
 
 // import { Input } from './Input/Input';
 import { FormButton } from 'components/shared/FormButton/FormButton';
@@ -64,6 +64,11 @@ export const ContactForm = ({ onSubmit }) => {
     </form>
   );
 };
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
+
 // export class ContactForm extends Component {
 //   static defaultProps = { onSubmit: () => {} };
 
