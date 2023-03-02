@@ -10,7 +10,7 @@ export const Filter = ({ value, onChange }) => {
         type="text"
         value={value}
         onChange={onChange}
-      ></input>
+      />
     </label>
   );
 };

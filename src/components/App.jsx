@@ -59,8 +59,8 @@ export const App = () => {
     );
   };
 
-  const changeFilter = e => {
-    setFilter({ filter: e.currentTarget.value });
+  const changeFilter = ({ target }) => {
+    setFilter(target.value);
   };
 
   const filterContacts = () => {
@@ -86,9 +86,7 @@ export const App = () => {
       <ContactForm onSubmit={addContact} />
       <section className={css.list}>
         <h2 className={css.contactsHeader}>Contacts</h2>
-        {contacts.length > 0 && (
-          <Filter value={filter} onChange={changeFilter} />
-        )}
+        {contacts.length > 0 && <Filter onChange={changeFilter} />}
         {contacts.length > 0 ? (
           <ContactList items={filteredContacts} removeContact={removeContact} />
         ) : (
