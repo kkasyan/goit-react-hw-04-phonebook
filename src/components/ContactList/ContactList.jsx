@@ -1,18 +1,15 @@
 import css from './contactList.module.css';
 import PropTypes from 'prop-types';
 
-import { Item } from './Item/Item';
+import Item from './Item/Item';
 
 export const ContactList = ({ items, removeContact }) => {
+  const elements = items.map(item => (
+    <Item key={item.id} removeContact={removeContact} contact={item} />
+  ));
   return (
     <>
-      <ul className={css.list}>
-        {items.map(item => (
-          <li key={item.id} className={css.item}>
-            <Item contact={item} removeContact={removeContact} />
-          </li>
-        ))}
-      </ul>
+      <ul className={css.list}>{elements}</ul>
     </>
   );
 };
@@ -26,3 +23,5 @@ ContactList.propTypes = {
     })
   ),
 };
+
+ContactList.defaultProps = { items: [] };

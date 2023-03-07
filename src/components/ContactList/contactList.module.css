@@ -11,12 +11,7 @@ p {
   padding: 0;
 }
 
-.item {
-  font-size: 17px;
-  display: flex;
-  padding: 2px;
-  align-items: center;
-}
+
 
 .btn {
   padding-top: 4px;
