@@ -1,5 +1,5 @@
 import css from './app.module.css';
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 
 import { nanoid } from 'nanoid';
 
@@ -17,8 +17,6 @@ export const App = () => {
   });
   const [filter, setFilter] = useState('');
 
-  const contactId = useMemo(() => nanoid(), []);
-
   const addContact = useCallback(
     data => {
       if (
@@ -34,13 +32,13 @@ export const App = () => {
 
       setContacts(prevContacts => {
         const newContact = {
-          id: contactId,
+          id: nanoid(),
           ...data,
         };
         return [...prevContacts, newContact];
       });
     },
-    [setContacts, contacts, contactId]
+    [setContacts, contacts]
   );
 
   const removeContact = useCallback(

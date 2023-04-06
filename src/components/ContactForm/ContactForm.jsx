@@ -1,8 +1,10 @@
 import css from './contactForm.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
+import { nanoid } from 'nanoid';
 import { FormButton } from 'components/shared/FormButton/FormButton';
+import { fields } from './fields';
 
 const ContactForm = ({ onSubmit }) => {
   const [state, setState] = useState({ name: '', number: '' });
@@ -30,28 +32,30 @@ const ContactForm = ({ onSubmit }) => {
     });
   };
 
+  const nameId = useMemo(() => nanoid(), []);
+  const numberId = useMemo(() => nanoid(), []);
+
   return (
     <form onSubmit={handleSubmit} className={css.form}>
       <label htmlFor="name">
         Name
         <input
           name="name"
+          id={nameId}
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+          {...fields.name}
         />
       </label>
       <label htmlFor="number">
         Number
         <input
           name="number"
+          id={numberId}
           value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
+          {...fields.number}
         />
       </label>
       <FormButton type="submit" text="Add contact" />
